@@ -9,6 +9,7 @@ import { Steps } from './components/Steps';
 import { ContactForm } from './components/ContactForm';
 import { RTOModal } from './components/RTOModal';
 import { Footer } from './components/Footer';
+import { AppProvider } from './components/AppContext';
 
 const COMPANY_INFO = {
   name: process.env.NEXT_PUBLIC_COMPANY_NAME || 'Rent4You Utility',
@@ -19,7 +20,7 @@ const COMPANY_INFO = {
 
 export default function HomePage() {
   return (
-    <>
+    <AppProvider>
       <Nav />
       <Hero />
       <Catalog />
@@ -28,7 +29,7 @@ export default function HomePage() {
       <Contact />
       <RTOModal />
       <Footer companyInfo={COMPANY_INFO} />
-    </>
+    </AppProvider>
   );
 }
 

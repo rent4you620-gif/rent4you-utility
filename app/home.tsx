@@ -65,8 +65,8 @@ function Hero() {
             <em>Own it if you want to.</em>
           </h1>
           <p className="lead">
-            Rent4You Utility connects you with everyday essentials — starting with washers & dryers — on flexible terms.
-            No warehouse, no long contracts, no pressure to buy until you're ready.
+            Rent everyday essentials — starting with washers & dryers — on flexible terms.
+            Pay by the day, month to month, or rent to own.
           </p>
           <div className="hero-actions">
             <a href="#contact" className="btn btn-primary">Request a rental</a>
@@ -86,10 +86,9 @@ function Catalog() {
         <div className="section-head">
           <p className="eyebrow">Available now</p>
           <h2>Washers & dryers, ready to deliver</h2>
-          <p>Our current live inventory — the rest of the catalog is expanding below.</p>
+          <p>Available now — with more essentials below.</p>
         </div>
         <CatalogGrid />
-        <span className="edit-note">EDIT ME: swap in your real pricing before this goes live.</span>
       </div>
     </section>
   );
@@ -103,16 +102,11 @@ function RTO() {
           <p className="eyebrow">Rent-to-own</p>
           <h2>Pick it out. Get approved. We order it.</h2>
           <p>
-            Smaller items are approved directly by us with a quick soft credit check. Bigger-ticket items route through
-            a lease-to-own financing partner who fronts the cost and takes on the payment risk — either way, nothing
+            Apply in a couple of minutes and get a quick decision. Your payments go toward owning the item — nothing
             ships until you're approved.
           </p>
         </div>
         <RTOGrid />
-        <span className="edit-note">
-          EDIT ME: item costs are placeholders — set your real product costs, and adjust SELF_APPROVAL_THRESHOLD near
-          the top of the script to change which items you approve yourself vs. route to your financing partner.
-        </span>
       </div>
     </section>
   );
@@ -124,11 +118,8 @@ function HowItWorks() {
       <div className="wrap">
         <div className="section-head">
           <p className="eyebrow">How it works</p>
-          <h2>Four steps, no inventory in sight</h2>
-          <p>
-            Because we don't hold stock ourselves, every rental runs through the same simple process — approval just
-            splits two ways depending on the item.
-          </p>
+          <h2>Renting is simple</h2>
+          <p>From application to delivery in four easy steps.</p>
         </div>
         <Steps />
       </div>

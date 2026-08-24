@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { Logo } from './components/Logo';
 import { DialCard } from './components/DialCard';
 import { CatalogGrid } from './components/CatalogGrid';

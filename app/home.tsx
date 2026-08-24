@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { Logo } from './components/Logo';
 import { DialCard } from './components/DialCard';
 import { CatalogGrid } from './components/CatalogGrid';
@@ -12,7 +11,7 @@ import { Footer } from './components/Footer';
 
 const COMPANY_INFO = {
   name: process.env.NEXT_PUBLIC_COMPANY_NAME || 'Rent4You Utility',
-  phone: process.env.NEXT_PUBLIC_PHONE || '(913) 555-0134',
+  phone: process.env.NEXT_PUBLIC_PHONE || '',
   email: process.env.NEXT_PUBLIC_EMAIL || 'hello@rent4youutility.com',
   serviceArea: process.env.NEXT_PUBLIC_SERVICE_AREA || 'Kansas City metro',
 };
@@ -89,7 +88,6 @@ function Catalog() {
           <p>Our current live inventory — the rest of the catalog is expanding below.</p>
         </div>
         <CatalogGrid />
-        <span className="edit-note">EDIT ME: swap in your real pricing before this goes live.</span>
       </div>
     </section>
   );
@@ -109,10 +107,6 @@ function RTO() {
           </p>
         </div>
         <RTOGrid />
-        <span className="edit-note">
-          EDIT ME: item costs are placeholders — set your real product costs, and adjust SELF_APPROVAL_THRESHOLD near
-          the top of the script to change which items you approve yourself vs. route to your financing partner.
-        </span>
       </div>
     </section>
   );
@@ -145,9 +139,11 @@ function Contact() {
             <p className="eyebrow">Get in touch</p>
             <h2>Ready to rent?</h2>
             <p>Fill out the form and we'll follow up with pricing and availability for your term. Prefer to talk it through first?</p>
-            <p className="contact-line">
-              <b>Call/Text:</b> {COMPANY_INFO.phone}
-            </p>
+            {COMPANY_INFO.phone && (
+              <p className="contact-line">
+                <b>Call/Text:</b> {COMPANY_INFO.phone}
+              </p>
+            )}
             <p className="contact-line">
               <b>Email:</b> {COMPANY_INFO.email}
             </p>

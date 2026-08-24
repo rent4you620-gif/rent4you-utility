@@ -17,7 +17,7 @@ Flexible rental service landing page with day, month-to-month, and rent-to-own o
 - **Framework**: Next.js 14
 - **Language**: TypeScript
 - **Styling**: CSS (custom properties)
-- **Hosting**: Vercel
+- **Hosting**: Netlify
 - **Email**: Nodemailer
 - **Validation**: Zod
 
@@ -108,27 +108,36 @@ Submit a rent-to-own application
 
 ## Deployment
 
-### Deploy to Vercel
+### Deploy to Netlify
 
 1. Push to GitHub
-2. Connect repo to Vercel: https://vercel.com
-3. Add environment variables in Vercel dashboard
-4. Deploy!
+2. Connect the repo to Netlify: https://app.netlify.com
+3. Add environment variables under **Site configuration → Environment variables**
+4. Deploy
 
-Vercel will automatically build and deploy on every push to `main`.
+Build settings come from `netlify.toml`, and Netlify installs the Next.js runtime
+automatically. Every push to `main` triggers a build.
+
+The `NEXT_PUBLIC_*` variables are inlined at build time, so change one and you need a
+fresh deploy for it to take effect. Until they are set, the page falls back to the
+placeholder contact details in `app/home.tsx`.
 
 ## Customization
 
 ### Update Company Info
 Edit the following files:
 - `.env.local` - Contact details and settings
-- `app/page.tsx` - Hero copy, catalog, pricing
-- `components/layout/Footer.tsx` - Footer information
+- `app/home.tsx` - Hero copy and section headings
+- `app/components/CatalogGrid.tsx` - Day/month rental pricing (`$XX` placeholders)
+- `app/lib/rto.ts` - Rent-to-own items, costs, and the approval threshold
+- `app/components/Footer.tsx` - Footer information
 
 ### Add More Items
-1. Update catalog grid in home page
-2. Add to RTO section with pricing and approval tier
-3. Update form select options
+1. Add the item to `CATALOG` in `app/components/CatalogGrid.tsx`
+2. Add it to `RTO_ITEMS` in `app/lib/rto.ts` — its `cost` decides whether it is
+   approved in-house or routed to the financing partner
+3. Add an icon for it in `app/components/icons.tsx`
+4. Update the `ITEMS` select options in `app/components/ContactForm.tsx`
 
 ### Integrate Financing Partner
 Replace the placeholder steps in the RTO modal with your partner's embedded widget (Katapult, Acima, etc.)

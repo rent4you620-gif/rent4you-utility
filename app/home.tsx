@@ -1,13 +1,13 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Logo } from './components/Logo';
 import { DialCard } from './components/DialCard';
 import { CatalogGrid } from './components/CatalogGrid';
 import { RTOGrid } from './components/RTOGrid';
 import { Steps } from './components/Steps';
-import { ContactForm } from './components/ContactForm';
-import { RTOModal } from './components/RTOModal';
+import ContactForm from './components/ContactForm';
+import RTOModal from './components/RTOModal';
 import { Footer } from './components/Footer';
 
 const COMPANY_INFO = {
@@ -18,15 +18,41 @@ const COMPANY_INFO = {
 };
 
 export default function HomePage() {
+  const [rtoModal, setRtoModal] = useState<{
+    isOpen: boolean;
+    item: string;
+    tier: string;
+    price: number;
+  }>({
+    isOpen: false,
+    item: '',
+    tier: '',
+    price: 0,
+  });
+
+  const openRtoModal = (item: string, tier: string, price: number) => {
+    setRtoModal({ isOpen: true, item, tier, price });
+  };
+
+  const closeRtoModal = () => {
+    setRtoModal({ isOpen: false, item: '', tier: '', price: 0 });
+  };
+
   return (
     <>
       <Nav />
       <Hero />
       <Catalog />
-      <RTO />
+      <RTO onOpenModal={openRtoModal} />
       <HowItWorks />
       <Contact />
-      <RTOModal />
+      <RTOModal
+        isOpen={rtoModal.isOpen}
+        onClose={closeRtoModal}
+        item={rtoModal.item}
+        tier={rtoModal.tier}
+        price={rtoModal.price}
+      />
       <Footer companyInfo={COMPANY_INFO} />
     </>
   );
@@ -95,7 +121,7 @@ function Catalog() {
   );
 }
 
-function RTO() {
+function RTO({ onOpenModal }: { onOpenModal: (item: string, tier: string, price: number) => void }) {
   return (
     <section className="alt" id="rto">
       <div className="wrap">
@@ -108,7 +134,7 @@ function RTO() {
             ships until you're approved.
           </p>
         </div>
-        <RTOGrid />
+        <RTOGrid onOpenModal={onOpenModal} />
         <span className="edit-note">
           EDIT ME: item costs are placeholders — set your real product costs, and adjust SELF_APPROVAL_THRESHOLD near
           the top of the script to change which items you approve yourself vs. route to your financing partner.

@@ -78,7 +78,9 @@ export default function RTOModal({ isOpen, onClose, item, tier, price }: RTOModa
         });
       }, 3000);
     } catch (error) {
-      setMessage('✗ Failed to submit. Please try again or call us.');
+      setMessage(
+        `✗ ${error instanceof Error ? error.message : 'Failed to submit. Please try again or call us.'}`
+      );
       console.error(error);
     } finally {
       setLoading(false);

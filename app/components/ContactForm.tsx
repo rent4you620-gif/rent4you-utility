@@ -44,7 +44,9 @@ export default function ContactForm() {
       // Auto-clear message after 5 seconds
       setTimeout(() => setMessage(''), 5000);
     } catch (error) {
-      setMessage('✗ Something went wrong. Please try again or call us.');
+      setMessage(
+        `✗ ${error instanceof Error ? error.message : 'Something went wrong. Please try again or call us.'}`
+      );
       console.error(error);
     } finally {
       setLoading(false);

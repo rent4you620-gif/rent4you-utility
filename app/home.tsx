@@ -12,9 +12,9 @@ import { Footer } from './components/Footer';
 
 const COMPANY_INFO = {
   name: process.env.NEXT_PUBLIC_COMPANY_NAME || 'Rent4You Utility',
-  phone: process.env.NEXT_PUBLIC_PHONE || '(913) 555-0134',
+  phone: process.env.NEXT_PUBLIC_PHONE || '(620) 390-9840',
   email: process.env.NEXT_PUBLIC_EMAIL || 'hello@rent4youutility.com',
-  serviceArea: process.env.NEXT_PUBLIC_SERVICE_AREA || 'Kansas City metro',
+  serviceArea: process.env.NEXT_PUBLIC_SERVICE_AREA || 'Dodge City',
 };
 
 export default function HomePage() {

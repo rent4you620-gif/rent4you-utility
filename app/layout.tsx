@@ -1,10 +1,9 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
   title: 'Rent4You Utility — Day, Month-to-Month & Rent-to-Own',
   description: 'Rent4You Utility connects you with everyday essentials — starting with washers & dryers — on flexible terms. No warehouse, no long contracts, no pressure to buy until you\'re ready.',
-  viewport: 'width=device-width, initial-scale=1',
   openGraph: {
     title: 'Rent4You Utility',
     description: 'Flexible rental options: day rentals, month-to-month, and rent-to-own',
@@ -12,6 +11,11 @@ export const metadata: Metadata = {
     siteName: 'Rent4You Utility',
     type: 'website',
   },
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
 };
 
 export default function RootLayout({

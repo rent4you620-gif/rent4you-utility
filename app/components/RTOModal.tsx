@@ -48,28 +48,37 @@ export default function RTOModal({ isOpen, onClose, item, tier, price }: RTOModa
         }),
       });
 
-      const data = await response.json();
-
-      if (response.ok) {
-        setMessage('✓ Application submitted! We\'ll review and contact you soon.');
-        setTimeout(() => {
-          onClose();
-          setFormData({
-            name: '',
-            dob: '',
-            phone: '',
-            email: '',
-            address: '',
-            city: '',
-            state: '',
-            zipcode: '',
-          });
-        }, 2000);
-      } else {
-        setMessage(`✗ Error: ${data.error || 'Failed to submit'}`);
+      const result = await response.json();
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to submit application');
       }
+
+      console.log('RTO Application submitted:', {
+        ...formData,
+        item,
+        tier,
+        price,
+      });
+      
+      setMessage(
+        `✓ Application received! Item: ${item} (${tier}) - $${price}/month`
+      );
+      
+      setTimeout(() => {
+        onClose();
+        setFormData({
+          name: '',
+          dob: '',
+          phone: '',
+          email: '',
+          address: '',
+          city: '',
+          state: '',
+          zipcode: '',
+        });
+      }, 3000);
     } catch (error) {
-      setMessage('✗ Failed to submit. Please try again.');
+      setMessage('✗ Failed to submit. Please try again or call us.');
       console.error(error);
     } finally {
       setLoading(false);

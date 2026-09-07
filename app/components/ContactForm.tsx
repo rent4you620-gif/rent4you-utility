@@ -31,16 +31,20 @@ export default function ContactForm() {
         body: JSON.stringify(formData),
       });
 
-      const data = await response.json();
-
-      if (response.ok) {
-        setMessage('✓ Thanks! We received your inquiry and will be in touch soon.');
-        setFormData({ name: '', phone: '', email: '', item: '', term: 'day', message: '' });
-      } else {
-        setMessage(`✗ Error: ${data.error || 'Failed to submit'}`);
+      const result = await response.json();
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to submit inquiry');
       }
+      
+      setMessage(
+        `✓ Thanks ${formData.name}! We received your inquiry.`
+      );
+      setFormData({ name: '', phone: '', email: '', item: '', term: 'day', message: '' });
+      
+      // Auto-clear message after 5 seconds
+      setTimeout(() => setMessage(''), 5000);
     } catch (error) {
-      setMessage('✗ Failed to submit. Please try again.');
+      setMessage('✗ Something went wrong. Please try again or call us.');
       console.error(error);
     } finally {
       setLoading(false);

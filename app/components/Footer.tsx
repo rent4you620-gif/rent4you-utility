@@ -47,14 +47,34 @@ export function Footer({ companyInfo }: FooterProps) {
                 <a href="#how">How It Works</a>
               </li>
               <li>
+                <a href="#faq">FAQ</a>
+              </li>
+              <li>
+                <a href="#service-area">Service Area</a>
+              </li>
+              <li>
                 <a href="#contact">Contact Us</a>
               </li>
+            </ul>
+          </div>
+
+          <div className="footer-section">
+            <h4>Business Info</h4>
+            <ul>
+              <li>Local service for Southwest Kansas</li>
+              <li>Same-day response available</li>
+              <li>Flexible rental and ownership plans</li>
             </ul>
           </div>
         </div>
 
         <div className="footer-bottom">
           <p>&copy; {currentYear} {companyInfo.name}. All rights reserved.</p>
+          <div className="footer-legal">
+            <a href="/privacy-policy">Privacy Policy</a>
+            <a href="/terms-of-service">Terms of Service</a>
+            <a href="#faq">FAQ</a>
+          </div>
         </div>
       </div>
 
@@ -109,13 +129,33 @@ export function Footer({ companyInfo }: FooterProps) {
         }
 
         .footer-bottom {
-          text-align: center;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 12px;
+          flex-wrap: wrap;
           color: rgba(255, 255, 255, 0.6);
           font-size: 0.9rem;
         }
 
         .footer-bottom p {
           margin: 0;
+        }
+
+        .footer-legal {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 14px;
+        }
+
+        .footer-legal a {
+          color: rgba(255, 255, 255, 0.7);
+          text-decoration: none;
+        }
+
+        .footer-legal a:hover {
+          color: white;
         }
 
         @media (max-width: 768px) {

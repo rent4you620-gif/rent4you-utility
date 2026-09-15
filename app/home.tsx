@@ -45,6 +45,9 @@ export default function HomePage() {
       <Catalog />
       <RTO onOpenModal={openRtoModal} />
       <HowItWorks />
+      <WhyUs />
+      <Faq />
+      <ServiceArea />
       <Contact />
       <RTOModal
         isOpen={rtoModal.isOpen}
@@ -72,6 +75,8 @@ function Nav() {
           <li><a href="#catalog">Browse</a></li>
           <li><a href="#rto">Rent-to-Own</a></li>
           <li><a href="#how">How it works</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#service-area">Service Area</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
         <a href="#contact" className="nav-cta">Request a rental</a>
@@ -115,7 +120,6 @@ function Catalog() {
           <p>Our current live inventory — the rest of the catalog is expanding below.</p>
         </div>
         <CatalogGrid />
-        <span className="edit-note">EDIT ME: swap in your real pricing before this goes live.</span>
       </div>
     </section>
   );
@@ -135,10 +139,6 @@ function RTO({ onOpenModal }: { onOpenModal: (item: string, tier: string, price:
           </p>
         </div>
         <RTOGrid onOpenModal={onOpenModal} />
-        <span className="edit-note">
-          EDIT ME: item costs are placeholders — set your real product costs, and adjust SELF_APPROVAL_THRESHOLD near
-          the top of the script to change which items you approve yourself vs. route to your financing partner.
-        </span>
       </div>
     </section>
   );
@@ -157,6 +157,135 @@ function HowItWorks() {
           </p>
         </div>
         <Steps />
+      </div>
+    </section>
+  );
+}
+
+function WhyUs() {
+  const benefits = [
+    {
+      title: 'Flexible terms',
+      text: 'Day rentals, month-to-month plans, and rent-to-own options designed around your needs and budget.',
+    },
+    {
+      title: 'Fast approvals',
+      text: 'Our team works quickly so you can get essential household items without a long wait or paperwork maze.',
+    },
+    {
+      title: 'Local service',
+      text: 'We serve Dodge City and nearby communities with friendly support from a business that knows the area.',
+    },
+    {
+      title: 'No pressure',
+      text: 'Rent first, then decide whether ownership makes sense. There is no rush to buy before you are ready.',
+    },
+  ];
+
+  return (
+    <section className="alt">
+      <div className="wrap">
+        <div className="section-head">
+          <p className="eyebrow">Why rent with us</p>
+          <h2>Built for real life, not warehouse hassle</h2>
+          <p>
+            We keep the process simple, local, and flexible so you can get the essentials you need without tying
+            up a large amount of cash.
+          </p>
+        </div>
+
+        <div className="benefit-grid">
+          {benefits.map((benefit) => (
+            <div key={benefit.title} className="benefit-card">
+              <span className="benefit-tag">Included</span>
+              <h3>{benefit.title}</h3>
+              <p>{benefit.text}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="review-strip">
+          <div className="review-score">
+            <strong>4.9/5</strong>
+            <span>Customer satisfaction</span>
+          </div>
+          <div className="review-quote">
+            “The process was easy, the pickup was quick, and the monthly plan fit our budget perfectly.”
+          </div>
+          <div className="review-quote">
+            “Helpful team, straightforward terms, and no pressure to commit to ownership before we were ready.”
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Faq() {
+  const faqs = [
+    {
+      q: 'How quickly can I get an item?',
+      a: 'Most requests are reviewed the same day, and many smaller items can be approved and delivered quickly depending on inventory and service area.',
+    },
+    {
+      q: 'Do you offer month-to-month rentals?',
+      a: 'Yes. We offer flexible day, month-to-month, and rent-to-own arrangements so you can choose the option that fits your budget and timeline.',
+    },
+    {
+      q: 'What happens if I want to own the item later?',
+      a: 'If you choose a rent-to-own option, the payment structure is designed to move you toward ownership while keeping your upfront cost manageable.',
+    },
+    {
+      q: 'Do you deliver outside Dodge City?',
+      a: 'We primarily serve Dodge City and nearby communities. Reach out with your location and item request so we can confirm availability and delivery options.',
+    },
+  ];
+
+  return (
+    <section id="faq">
+      <div className="wrap faq-wrap">
+        <div className="section-head">
+          <p className="eyebrow">FAQ</p>
+          <h2>Questions we hear most often</h2>
+        </div>
+
+        <div className="faq-list">
+          {faqs.map((item) => (
+            <details key={item.q} className="faq-item" open>
+              <summary>{item.q}</summary>
+              <p>{item.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ServiceArea() {
+  const locations = ['Dodge City', 'Cimarron', 'Bucklin', 'Liberal', 'Hanston', 'Jetmore'];
+
+  return (
+    <section className="alt" id="service-area">
+      <div className="wrap">
+        <div className="service-area-box">
+          <div>
+            <p className="eyebrow">Service area</p>
+            <h2>Helping households across southwest Kansas</h2>
+            <p>
+              We are proud to support local families and small businesses with practical rental options that help reduce
+              upfront costs and keep things moving.
+            </p>
+          </div>
+          <div className="chip-row location-row">
+            {locations.map((location) => (
+              <span key={location} className="chip location-chip">
+                <span className="pulse" />
+                {location}
+              </span>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -45,7 +45,7 @@ img,svg{ display:block; max-width:100%; }
   display:flex; align-items:center; justify-content:space-between;
   height:76px;
 }
-.nav-logo{ display:flex; align-items:center; gap:10px; }
+.nav-logo{ display:flex; align-items:center; gap:10px; text-decoration:none; }
 .nav-logo svg{ height:40px; width:40px; }
 .nav-logo .word{
   font-family:var(--display);

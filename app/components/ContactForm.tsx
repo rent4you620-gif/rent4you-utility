@@ -2,7 +2,13 @@
 
 import { useState } from 'react';
 
-export default function ContactForm() {
+interface ContactFormProps {
+  requestedItems: string[];
+  onRemoveItem: (item: string) => void;
+  onClearRequest: () => void;
+}
+
+export default function ContactForm({ requestedItems, onRemoveItem, onClearRequest }: ContactFormProps) {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -25,10 +31,13 @@ export default function ContactForm() {
     setMessage('');
 
     try {
-      const response = await fetch('/api/inquiries', {
+        const response = await fetch('/api/inquiries', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+          body: JSON.stringify({
+            ...formData,
+            item: requestedItems.length ? requestedItems.join(', ') : formData.item,
+          }),
       });
 
       const result = await response.json();
@@ -36,9 +45,8 @@ export default function ContactForm() {
         throw new Error(result.error || 'Failed to submit inquiry');
       }
       
-      setMessage(
-        `✓ Thanks ${formData.name}! We received your inquiry.`
-      );
+      setMessage(`✓ Thanks ${formData.name}! We received your inquiry.`);
+      onClearRequest();
       setFormData({ name: '', phone: '', email: '', item: '', term: 'day', message: '' });
       
       // Auto-clear message after 5 seconds
@@ -55,6 +63,20 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="contact-form">
+      {requestedItems.length > 0 && (
+        <div className="request-list" aria-live="polite">
+          <div className="request-list-heading">Your rental request</div>
+          {requestedItems.map((item) => (
+            <div key={item} className="request-item">
+              <span>{item}</span>
+              <button type="button" onClick={() => onRemoveItem(item)} aria-label={`Remove ${item}`}>
+                Remove
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
+
       <div className="form-group">
         <label htmlFor="name">Full Name *</label>
         <input
@@ -63,7 +85,7 @@ export default function ContactForm() {
           name="name"
           value={formData.name}
           onChange={handleChange}
-          required
+          required={requestedItems.length === 0}
         />
       </div>
 
@@ -157,6 +179,36 @@ export default function ContactForm() {
           display: flex;
           flex-direction: column;
           gap: 0.5rem;
+        }
+
+        .request-list {
+          display: flex;
+          flex-direction: column;
+          gap: 0.65rem;
+          padding: 1rem;
+          border: 2px solid var(--color-primary);
+          border-radius: 8px;
+          background: rgba(255, 255, 255, 0.08);
+        }
+
+        .request-list-heading {
+          font-weight: 700;
+        }
+
+        .request-item {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 1rem;
+        }
+
+        .request-item button {
+          padding: 0;
+          border: 0;
+          background: transparent;
+          color: inherit;
+          text-decoration: underline;
+          cursor: pointer;
         }
 
         label {

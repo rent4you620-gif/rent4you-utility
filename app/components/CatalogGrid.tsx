@@ -25,14 +25,6 @@ const CATALOG_ITEMS = [
   },
   {
     id: 4,
-    name: 'Refrigerator',
-    daily: 20,
-    monthly: 70,
-    image: '/products/refrigerator.jpg',
-    icon: '❄️',
-  },
-  {
-    id: 5,
     name: 'Skid Steer Electric Cement Mixer',
     daily: null,
     monthly: null,
@@ -41,7 +33,12 @@ const CATALOG_ITEMS = [
   },
 ];
 
-export function CatalogGrid() {
+interface CatalogGridProps {
+  requestedItems: string[];
+  onAddToRequest: (item: string) => void;
+}
+
+export function CatalogGrid({ requestedItems, onAddToRequest }: CatalogGridProps) {
   return (
     <div className="catalog-grid">
       {CATALOG_ITEMS.map((item) => (
@@ -62,9 +59,13 @@ export function CatalogGrid() {
               <span className="price-amount">{item.monthly ? `$${item.monthly}` : 'for pricing'}</span>
             </div>
           </div>
-          <a href="#contact" className="btn btn-outline">
-            Inquire
-          </a>
+          <button
+            type="button"
+            className={`btn btn-outline ${requestedItems.includes(item.name) ? 'added' : ''}`}
+            onClick={() => onAddToRequest(item.name)}
+          >
+            {requestedItems.includes(item.name) ? 'Added to request' : 'Add to request'}
+          </button>
         </div>
       ))}
 
@@ -98,7 +99,8 @@ export function CatalogGrid() {
         .catalog-image {
           width: 100%;
           height: 180px;
-          object-fit: cover;
+          object-fit: contain;
+          background: #f6f7f5;
           border-radius: 8px;
           margin-bottom: 1rem;
         }

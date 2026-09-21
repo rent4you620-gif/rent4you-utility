@@ -28,15 +28,6 @@ const RTO_ITEMS = [
       { name: 'Deluxe', price: 110 },
     ],
   },
-  {
-    id: 4,
-    name: 'Refrigerator',
-    image: '/products/refrigerator.jpg',
-    tiers: [
-      { name: 'Standard', price: 70 },
-      { name: 'Smart', price: 95 },
-    ],
-  },
 ];
 
 interface RTOGridProps {
@@ -99,7 +90,8 @@ export function RTOGrid({ onOpenModal }: RTOGridProps) {
         .rto-image {
           width: 100%;
           height: 180px;
-          object-fit: cover;
+          object-fit: contain;
+          background: #f6f7f5;
           border-radius: 8px;
           margin-bottom: 1rem;
         }

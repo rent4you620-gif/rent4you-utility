@@ -18,6 +18,7 @@ const COMPANY_INFO = {
 };
 
 export default function HomePage() {
+  const [requestedItems, setRequestedItems] = useState<string[]>([]);
   const [rtoModal, setRtoModal] = useState<{
     isOpen: boolean;
     item: string;
@@ -38,17 +39,31 @@ export default function HomePage() {
     setRtoModal({ isOpen: false, item: '', tier: '', price: 0 });
   };
 
+  const addToRequest = (item: string) => {
+    setRequestedItems((currentItems) =>
+      currentItems.includes(item) ? currentItems : [...currentItems, item]
+    );
+  };
+
+  const removeFromRequest = (item: string) => {
+    setRequestedItems((currentItems) => currentItems.filter((currentItem) => currentItem !== item));
+  };
+
+  const clearRequest = () => {
+    setRequestedItems([]);
+  };
+
   return (
     <>
       <Nav />
       <Hero />
-      <Catalog />
+      <Catalog requestedItems={requestedItems} onAddToRequest={addToRequest} />
       <RTO onOpenModal={openRtoModal} />
       <HowItWorks />
       <WhyUs />
       <Faq />
       <ServiceArea />
-      <Contact />
+      <Contact requestedItems={requestedItems} onRemoveItem={removeFromRequest} onClearRequest={clearRequest} />
       <RTOModal
         isOpen={rtoModal.isOpen}
         onClose={closeRtoModal}
@@ -110,7 +125,10 @@ function Hero() {
   );
 }
 
-function Catalog() {
+function Catalog({ requestedItems, onAddToRequest }: {
+  requestedItems: string[];
+  onAddToRequest: (item: string) => void;
+}) {
   return (
     <section id="catalog">
       <div className="wrap">
@@ -119,7 +137,7 @@ function Catalog() {
           <h2>Washers & dryers, ready to deliver</h2>
           <p>Our current live inventory — the rest of the catalog is expanding below.</p>
         </div>
-        <CatalogGrid />
+        <CatalogGrid requestedItems={requestedItems} onAddToRequest={onAddToRequest} />
       </div>
     </section>
   );
@@ -291,7 +309,11 @@ function ServiceArea() {
   );
 }
 
-function Contact() {
+function Contact({ requestedItems, onRemoveItem, onClearRequest }: {
+  requestedItems: string[];
+  onRemoveItem: (item: string) => void;
+  onClearRequest: () => void;
+}) {
   return (
     <section id="contact" style={{ background: 'var(--brand-dark)', padding: '80px 0' }}>
       <div className="wrap">
@@ -310,7 +332,11 @@ function Contact() {
               <b>Serving:</b> {COMPANY_INFO.serviceArea}
             </p>
           </div>
-          <ContactForm />
+          <ContactForm
+            requestedItems={requestedItems}
+            onRemoveItem={onRemoveItem}
+            onClearRequest={onClearRequest}
+          />
         </div>
       </div>
     </section>

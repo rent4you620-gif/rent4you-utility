@@ -23,16 +23,14 @@ const CATALOG_ITEMS = [
   {
     id: 4,
     name: 'Bauer 2000 PSI Pressure Washer',
-    daily: 50,
-    monthly: null,
+    weekly: 50,
     image: '/products/IMG_0925.WEBP',
     icon: '💦',
   },
   {
     id: 5,
     name: 'Skid Steer Electric Cement Mixer',
-    daily: 150,
-    monthly: null,
+    weekly: 150,
     image: '/products/IMG_0784.jpeg',
     images: ['/products/IMG_0784.jpeg'],
     icon: '🏗️',
@@ -84,16 +82,16 @@ export function CatalogGrid({ requestedItems, onAddToRequest }: CatalogGridProps
 
               <h3>{item.name}</h3>
               <div className="catalog-pricing">
-                {item.daily !== null && item.daily !== undefined && (
+                {item.weekly !== null && item.weekly !== undefined && (
                   <div className="price-tier">
-                    <span className="price-label">Daily rental</span>
-                    <span className="price-amount">${item.daily}</span>
+                    <span className="price-label">Weekly rental</span>
+                    <span className="price-amount">${item.weekly}</span>
                   </div>
                 )}
-                <div className="price-tier">
+                {item.monthly !== null && item.monthly !== undefined && <div className="price-tier">
                   <span className="price-label">Monthly rental</span>
-                  <span className="price-amount">{item.monthly ? `$${item.monthly}` : 'for pricing'}</span>
-                </div>
+                  <span className="price-amount">${item.monthly}</span>
+                </div>}
               </div>
               <button
                 type="button"

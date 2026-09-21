@@ -135,7 +135,7 @@ Replace the placeholder steps in the RTO modal with your partner's embedded widg
 
 ## Support
 
-For issues or questions, contact: hello@rent4youutility.com
+For issues or questions, contact: rent4you620@gmail.com
 
 ## License
 

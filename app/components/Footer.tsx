@@ -50,6 +50,11 @@ export function Footer({ companyInfo }: FooterProps) {
                 <a href="#service-area">Service Area</a>
               </li>
               <li>
+                <a href="https://rent4you.online" target="_blank" rel="noopener noreferrer">
+                  Planning a party or event?
+                </a>
+              </li>
+              <li>
                 <a href="#contact">Contact Us</a>
               </li>
             </ul>
@@ -70,8 +75,13 @@ export function Footer({ companyInfo }: FooterProps) {
           <div className="footer-legal">
             <a href="/privacy-policy">Privacy Policy</a>
             <a href="/terms-of-service">Terms of Service</a>
-            <a href="https://rent4you.online" target="_blank" rel="noopener noreferrer">
-              Rent4You Online
+            <a
+              href="https://rent4you.online"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-event-link"
+            >
+              Planning an event? Visit Rent4You Online
             </a>
             <a href="#faq">FAQ</a>
           </div>
@@ -156,6 +166,17 @@ export function Footer({ companyInfo }: FooterProps) {
 
         .footer-legal a:hover {
           color: white;
+        }
+
+        .footer-event-link {
+          color: #f6d88b !important;
+          font-weight: 700;
+          text-decoration: underline !important;
+          text-underline-offset: 3px;
+        }
+
+        .footer-event-link:hover {
+          color: #fff4c9 !important;
         }
 
         @media (max-width: 768px) {

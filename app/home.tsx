@@ -12,7 +12,7 @@ import { Footer } from './components/Footer';
 const COMPANY_INFO = {
   name: process.env.NEXT_PUBLIC_COMPANY_NAME || 'Rent4You Utility',
   phone: process.env.NEXT_PUBLIC_PHONE || '(620) 390-9840',
-  email: process.env.NEXT_PUBLIC_EMAIL || 'hello@rent4youutility.com',
+  email: process.env.NEXT_PUBLIC_EMAIL || 'rent4you620@gmail.com',
   serviceArea: process.env.NEXT_PUBLIC_SERVICE_AREA || 'Dodge City',
 };
 

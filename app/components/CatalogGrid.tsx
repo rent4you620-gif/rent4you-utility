@@ -1,4 +1,15 @@
-const CATALOG_ITEMS = [
+interface CatalogItem {
+  id: number;
+  name: string;
+  daily?: number | null;
+  weekly?: number | null;
+  monthly?: number | null;
+  image?: string;
+  images?: string[];
+  icon: string;
+}
+
+const CATALOG_ITEMS: CatalogItem[] = [
   {
     id: 1,
     name: 'Standard Washer',
@@ -23,14 +34,16 @@ const CATALOG_ITEMS = [
   {
     id: 4,
     name: 'Bauer 2000 PSI Pressure Washer',
-    weekly: 50,
+    daily: 50,
+    weekly: null,
     image: '/products/IMG_0925.WEBP',
     icon: '💦',
   },
   {
     id: 5,
     name: 'Skid Steer Electric Cement Mixer',
-    weekly: 150,
+    daily: 150,
+    weekly: null,
     image: '/products/IMG_0784.jpeg',
     images: ['/products/IMG_0784.jpeg'],
     icon: '🏗️',
@@ -82,16 +95,24 @@ export function CatalogGrid({ requestedItems, onAddToRequest }: CatalogGridProps
 
               <h3>{item.name}</h3>
               <div className="catalog-pricing">
-                {item.weekly !== null && item.weekly !== undefined && (
+                {item.daily !== null && item.daily !== undefined && (
                   <div className="price-tier">
-                    <span className="price-label">Weekly rental</span>
-                    <span className="price-amount">${item.weekly}</span>
+                    <span className="price-label">Daily rental</span>
+                    <span className="price-amount">${item.daily}</span>
                   </div>
                 )}
-                {item.monthly !== null && item.monthly !== undefined && <div className="price-tier">
-                  <span className="price-label">Monthly rental</span>
-                  <span className="price-amount">${item.monthly}</span>
-                </div>}
+                {item.weekly !== undefined && (
+                  <div className="price-tier">
+                    <span className="price-label">Weekly rental</span>
+                    <span className="price-amount">{item.weekly ? `$${item.weekly}` : 'for pricing'}</span>
+                  </div>
+                )}
+                {item.monthly !== null && item.monthly !== undefined && (
+                  <div className="price-tier">
+                    <span className="price-label">Monthly rental</span>
+                    <span className="price-amount">${item.monthly}</span>
+                  </div>
+                )}
               </div>
               <button
                 type="button"

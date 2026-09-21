@@ -22,10 +22,19 @@ const CATALOG_ITEMS = [
   },
   {
     id: 4,
+    name: 'Bauer 2000 PSI Pressure Washer',
+    daily: null,
+    monthly: null,
+    image: '/products/IMG_0925.WEBP',
+    icon: '💦',
+  },
+  {
+    id: 5,
     name: 'Skid Steer Electric Cement Mixer',
     daily: null,
     monthly: null,
     image: '/products/IMG_0784.jpeg',
+    images: ['/products/IMG_0784.jpeg'],
     icon: '🏗️',
   },
 ];
@@ -47,29 +56,46 @@ export function CatalogGrid({ requestedItems, onAddToRequest }: CatalogGridProps
       <div className="catalog-grid">
         {CATALOG_ITEMS.map((item) => {
           const isRequested = requestedItems.includes(item.name);
+          const displayImages = item.images && item.images.length > 0 ? item.images : item.image ? [item.image] : [];
 
           return (
             <div key={item.id} className={`catalog-card ${isRequested ? 'requested' : ''}`}>
               {isRequested && <span className="requested-badge">Added</span>}
-          {item.image ? (
-            <img className="catalog-image" src={item.image} alt={item.name} />
-          ) : (
-            <div className="catalog-icon">{item.icon}</div>
-          )}
-          <h3>{item.name}</h3>
-          <div className="catalog-pricing">
-            <div className="price-tier">
-              <span className="price-label">Monthly rental</span>
-              <span className="price-amount">{item.monthly ? `$${item.monthly}` : 'for pricing'}</span>
-            </div>
-          </div>
-          <button
-            type="button"
-            className={`btn btn-outline ${isRequested ? 'added' : ''}`}
-            onClick={() => onAddToRequest(item.name)}
-          >
-            {isRequested ? 'Added to request' : 'Add to request'}
-          </button>
+
+              {displayImages.length > 1 ? (
+                <div className="catalog-gallery">
+                  <img className="catalog-image" src={displayImages[0]} alt={item.name} />
+                  <div className="catalog-gallery-thumbs">
+                    {displayImages.slice(1).map((image, index) => (
+                      <img
+                        key={`${item.id}-thumb-${index}`}
+                        className="catalog-gallery-thumb"
+                        src={image}
+                        alt={`${item.name} view ${index + 2}`}
+                      />
+                    ))}
+                  </div>
+                </div>
+              ) : displayImages.length > 0 ? (
+                <img className="catalog-image" src={displayImages[0]} alt={item.name} />
+              ) : (
+                <div className="catalog-icon">{item.icon}</div>
+              )}
+
+              <h3>{item.name}</h3>
+              <div className="catalog-pricing">
+                <div className="price-tier">
+                  <span className="price-label">Monthly rental</span>
+                  <span className="price-amount">{item.monthly ? `$${item.monthly}` : 'for pricing'}</span>
+                </div>
+              </div>
+              <button
+                type="button"
+                className={`btn btn-outline ${isRequested ? 'added' : ''}`}
+                onClick={() => onAddToRequest(item.name)}
+              >
+                {isRequested ? 'Added to request' : 'Add to request'}
+              </button>
             </div>
           );
         })}
@@ -148,6 +174,29 @@ export function CatalogGrid({ requestedItems, onAddToRequest }: CatalogGridProps
           background: #f6f7f5;
           border-radius: 8px;
           margin-bottom: 1rem;
+        }
+
+        .catalog-gallery {
+          display: flex;
+          flex-direction: column;
+          gap: 0.75rem;
+          margin-bottom: 1rem;
+        }
+
+        .catalog-gallery-thumbs {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+          gap: 0.5rem;
+          width: 100%;
+        }
+
+        .catalog-gallery-thumb {
+          width: 100%;
+          height: 60px;
+          object-fit: cover;
+          border-radius: 8px;
+          background: #f6f7f5;
+          border: 1px solid var(--color-border);
         }
 
         .catalog-card h3 {

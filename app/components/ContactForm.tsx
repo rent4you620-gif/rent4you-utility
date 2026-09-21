@@ -126,6 +126,7 @@ export default function ContactForm({ requestedItems, onRemoveItem, onClearReque
           <option value="washer">Washer</option>
           <option value="dryer">Dryer</option>
           <option value="combo">Washer/Dryer Combo</option>
+          <option value="pressure-washer">Bauer 2000 PSI Pressure Washer</option>
           <option value="household">Household Items</option>
           <option value="other">Other</option>
         </select>

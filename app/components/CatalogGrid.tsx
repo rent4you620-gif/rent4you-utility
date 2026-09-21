@@ -4,6 +4,7 @@ const CATALOG_ITEMS = [
     name: 'Standard Washer',
     daily: 15,
     monthly: 45,
+    image: '/products/IMG_0922.WEBP',
     icon: '🔄',
   },
   {
@@ -11,6 +12,7 @@ const CATALOG_ITEMS = [
     name: 'Standard Dryer',
     daily: 12,
     monthly: 40,
+    image: '/products/IMG_0923.WEBP',
     icon: '🌬️',
   },
   {
@@ -18,6 +20,7 @@ const CATALOG_ITEMS = [
     name: 'Washer & Dryer Combo',
     daily: 25,
     monthly: 80,
+    image: '/products/IMG_9434.AVIF',
     icon: '⚙️',
   },
   {
@@ -25,7 +28,16 @@ const CATALOG_ITEMS = [
     name: 'Refrigerator',
     daily: 20,
     monthly: 70,
+    image: '/products/refrigerator.jpg',
     icon: '❄️',
+  },
+  {
+    id: 5,
+    name: 'Skid Steer Electric Cement Mixer',
+    daily: null,
+    monthly: null,
+    image: '/products/IMG_0784.jpeg',
+    icon: '🏗️',
   },
 ];
 
@@ -34,16 +46,20 @@ export function CatalogGrid() {
     <div className="catalog-grid">
       {CATALOG_ITEMS.map((item) => (
         <div key={item.id} className="catalog-card">
-          <div className="catalog-icon">{item.icon}</div>
+          {item.image ? (
+            <img className="catalog-image" src={item.image} alt={item.name} />
+          ) : (
+            <div className="catalog-icon">{item.icon}</div>
+          )}
           <h3>{item.name}</h3>
           <div className="catalog-pricing">
             <div className="price-tier">
               <span className="price-label">Day</span>
-              <span className="price-amount">${item.daily}</span>
+              <span className="price-amount">{item.daily ? `$${item.daily}` : 'Contact'}</span>
             </div>
             <div className="price-tier">
               <span className="price-label">Month</span>
-              <span className="price-amount">${item.monthly}</span>
+              <span className="price-amount">{item.monthly ? `$${item.monthly}` : 'for pricing'}</span>
             </div>
           </div>
           <a href="#contact" className="btn btn-outline">
@@ -76,6 +92,14 @@ export function CatalogGrid() {
 
         .catalog-icon {
           font-size: 2.5rem;
+          margin-bottom: 1rem;
+        }
+
+        .catalog-image {
+          width: 100%;
+          height: 180px;
+          object-fit: cover;
+          border-radius: 8px;
           margin-bottom: 1rem;
         }
 

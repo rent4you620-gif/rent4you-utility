@@ -4,6 +4,7 @@ const RTO_ITEMS = [
   {
     id: 1,
     name: 'Standard Washer',
+    image: '/products/IMG_0922.WEBP',
     tiers: [
       { name: 'Basic', price: 45 },
       { name: 'Premium', price: 65 },
@@ -12,6 +13,7 @@ const RTO_ITEMS = [
   {
     id: 2,
     name: 'Standard Dryer',
+    image: '/products/IMG_0923.WEBP',
     tiers: [
       { name: 'Basic', price: 40 },
       { name: 'Premium', price: 55 },
@@ -20,6 +22,7 @@ const RTO_ITEMS = [
   {
     id: 3,
     name: 'Washer & Dryer Combo',
+    image: '/products/IMG_9434.AVIF',
     tiers: [
       { name: 'Basic', price: 80 },
       { name: 'Deluxe', price: 110 },
@@ -28,6 +31,7 @@ const RTO_ITEMS = [
   {
     id: 4,
     name: 'Refrigerator',
+    image: '/products/refrigerator.jpg',
     tiers: [
       { name: 'Standard', price: 70 },
       { name: 'Smart', price: 95 },
@@ -44,7 +48,11 @@ export function RTOGrid({ onOpenModal }: RTOGridProps) {
     <div className="rto-grid">
       {RTO_ITEMS.map((item) => (
         <div key={item.id} className="rto-card">
-          <div className="rto-card-icon">📦</div>
+          {item.image ? (
+            <img className="rto-image" src={item.image} alt={item.name} />
+          ) : (
+            <div className="rto-card-icon">📦</div>
+          )}
           <h3>{item.name}</h3>
           <div className="rto-tiers">
             {item.tiers.map((tier, idx) => (
@@ -85,6 +93,14 @@ export function RTOGrid({ onOpenModal }: RTOGridProps) {
 
         .rto-card-icon {
           font-size: 2.5rem;
+          margin-bottom: 1rem;
+        }
+
+        .rto-image {
+          width: 100%;
+          height: 180px;
+          object-fit: cover;
+          border-radius: 8px;
           margin-bottom: 1rem;
         }
 

@@ -132,21 +132,6 @@ export default function ContactForm({ requestedItems, onRemoveItem, onClearReque
       </div>
 
       <div className="form-group">
-        <label htmlFor="term">Rental Term *</label>
-        <select
-          id="term"
-          name="term"
-          value={formData.term}
-          onChange={handleChange}
-          required
-        >
-          <option value="day">Day</option>
-          <option value="month">Month</option>
-          <option value="own">Rent-to-Own</option>
-        </select>
-      </div>
-
-      <div className="form-group">
         <label htmlFor="message">Additional Message</label>
         <textarea
           id="message"

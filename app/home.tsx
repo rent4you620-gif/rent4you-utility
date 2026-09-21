@@ -102,14 +102,14 @@ function Hero() {
     <header className="hero" id="top">
       <div className="wrap">
         <div className="hero-copy">
-          <p className="eyebrow">Day · Month-to-Month · Rent-to-Own</p>
+          <p className="eyebrow">Monthly rentals · Rent-to-own coming soon</p>
           <h1>
             Rent what you need.<br />
             <em>Own it if you want to.</em>
           </h1>
           <p className="lead">
-            Rent4You Utility connects you with everyday essentials — starting with washers & dryers — on flexible terms.
-            No warehouse, no long contracts, no pressure to buy until you're ready.
+            Rent4You Utility connects you with everyday essentials — starting with washers & dryers — with simple
+            monthly pricing. Rent-to-own options are coming soon.
           </p>
           <div className="hero-actions">
             <a href="#contact" className="btn btn-primary">Request a rental</a>
@@ -146,11 +146,10 @@ function RTO({ onOpenModal }: { onOpenModal: (item: string, tier: string, price:
       <div className="wrap">
         <div className="section-head">
           <p className="eyebrow">Rent-to-own</p>
-          <h2>Pick it out. Get approved. We order it.</h2>
+          <h2>Rent-to-own is coming soon</h2>
           <p>
-            Smaller items are approved directly by us with a quick soft credit check. Bigger-ticket items route through
-            a lease-to-own financing partner who fronts the cost and takes on the payment risk — either way, nothing
-            ships until you're approved.
+            We are preparing rent-to-own options for a future launch. Browse the upcoming items now, and contact us
+            about our current monthly rental availability.
           </p>
         </div>
         <RTOGrid onOpenModal={onOpenModal} />
@@ -163,7 +162,7 @@ function WhyUs() {
   const benefits = [
     {
       title: 'Flexible terms',
-      text: 'Day rentals, month-to-month plans, and rent-to-own options designed around your needs and budget.',
+      text: 'Monthly rentals designed around your needs and budget, with rent-to-own options coming soon.',
     },
     {
       title: 'Fast approvals',
@@ -226,7 +225,7 @@ function Faq() {
     },
     {
       q: 'Do you offer month-to-month rentals?',
-      a: 'Yes. We offer flexible day, month-to-month, and rent-to-own arrangements so you can choose the option that fits your budget and timeline.',
+      a: 'Yes. We currently offer monthly rentals. Rent-to-own options are coming soon.',
     },
     {
       q: 'What happens if I want to own the item later?',

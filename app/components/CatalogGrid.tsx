@@ -2,7 +2,6 @@ const CATALOG_ITEMS = [
   {
     id: 1,
     name: 'Standard Washer',
-    daily: 15,
     monthly: 50,
     image: '/products/IMG_0922.WEBP',
     icon: '🔄',
@@ -10,7 +9,6 @@ const CATALOG_ITEMS = [
   {
     id: 2,
     name: 'Standard Dryer',
-    daily: 12,
     monthly: 50,
     image: '/products/IMG_0923.WEBP',
     icon: '🌬️',
@@ -18,7 +16,6 @@ const CATALOG_ITEMS = [
   {
     id: 3,
     name: 'Washer & Dryer Combo',
-    daily: 25,
     monthly: 80,
     image: '/products/IMG_9434.AVIF',
     icon: '⚙️',
@@ -62,11 +59,7 @@ export function CatalogGrid({ requestedItems, onAddToRequest }: CatalogGridProps
           <h3>{item.name}</h3>
           <div className="catalog-pricing">
             <div className="price-tier">
-              <span className="price-label">Day</span>
-              <span className="price-amount">{item.daily ? `$${item.daily}` : 'Contact'}</span>
-            </div>
-            <div className="price-tier">
-              <span className="price-label">Month</span>
+              <span className="price-label">Monthly rental</span>
               <span className="price-amount">{item.monthly ? `$${item.monthly}` : 'for pricing'}</span>
             </div>
           </div>

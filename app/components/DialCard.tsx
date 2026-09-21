@@ -1,47 +1,11 @@
-'use client';
-
-import { useState } from 'react';
-
 export function DialCard() {
-  const [selectedTerm, setSelectedTerm] = useState<'day' | 'month' | 'own'>('month');
-
-  const terms = {
-    day: {
-      label: 'Day',
-      description: 'Quick rental for immediate needs',
-      example: 'Starting at $15/day',
-    },
-    month: {
-      label: 'Month-to-Month',
-      description: 'Flexible rental without long-term commitment',
-      example: 'Starting at $40/month',
-    },
-    own: {
-      label: 'Rent-to-Own',
-      description: 'Build equity with every payment toward ownership',
-      example: 'Starting at $45/month',
-    },
-  };
-
   return (
     <div className="dial-card">
       <div className="dial-content">
         <div className="dial-display">
-          <h3>{terms[selectedTerm].label}</h3>
-          <p className="dial-description">{terms[selectedTerm].description}</p>
-          <p className="dial-example">{terms[selectedTerm].example}</p>
-        </div>
-
-        <div className="dial-controls">
-          {(['day', 'month', 'own'] as const).map((term) => (
-            <button
-              key={term}
-              className={`dial-button ${selectedTerm === term ? 'active' : ''}`}
-              onClick={() => setSelectedTerm(term)}
-            >
-              {terms[term].label}
-            </button>
-          ))}
+          <h3>Monthly rentals</h3>
+          <p className="dial-description">Simple pricing with free delivery, installation, and maintenance.</p>
+          <p className="dial-example">Starting at $50/month</p>
         </div>
       </div>
 
@@ -83,36 +47,6 @@ export function DialCard() {
           font-size: 1.2rem;
           font-weight: 600;
           color: #ffd700;
-        }
-
-        .dial-controls {
-          display: flex;
-          gap: 0.75rem;
-          flex-wrap: wrap;
-          justify-content: center;
-        }
-
-        .dial-button {
-          padding: 0.75rem 1.25rem;
-          background-color: rgba(255, 255, 255, 0.2);
-          border: 2px solid rgba(255, 255, 255, 0.3);
-          color: white;
-          border-radius: 8px;
-          font-weight: 600;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          font-size: 0.9rem;
-        }
-
-        .dial-button:hover {
-          background-color: rgba(255, 255, 255, 0.3);
-          border-color: white;
-        }
-
-        .dial-button.active {
-          background-color: white;
-          color: var(--color-primary);
-          border-color: white;
         }
 
         @media (max-width: 768px) {

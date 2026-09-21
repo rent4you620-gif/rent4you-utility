@@ -2,11 +2,11 @@ import type { Metadata, Viewport } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Rent4You Utility — Day, Month-to-Month & Rent-to-Own',
-  description: 'Rent4You Utility connects you with everyday essentials — starting with washers & dryers — on flexible terms. No warehouse, no long contracts, no pressure to buy until you\'re ready.',
+  title: 'Rent4You Utility — Monthly Rentals & Rent-to-Own Coming Soon',
+  description: 'Rent4You Utility offers monthly rentals for everyday essentials, starting with washers and dryers. Rent-to-own options are coming soon.',
   openGraph: {
     title: 'Rent4You Utility',
-    description: 'Flexible rental options: day rentals, month-to-month, and rent-to-own',
+    description: 'Monthly rental options with rent-to-own coming soon',
     url: 'https://rent4youutility.com',
     siteName: 'Rent4You Utility',
     type: 'website',

@@ -47,9 +47,10 @@ export function RTOGrid({ onOpenModal }: RTOGridProps) {
               <button
                 key={idx}
                 className="rto-tier-btn"
+                disabled
                 onClick={() => onOpenModal(item.name, tier.name, tier.price)}
               >
-                <span className="tier-name">{tier.name}</span>
+                <span className="tier-name">Coming soon</span>
                 <span className="tier-price">${tier.price}/mo</span>
               </button>
             ))}
@@ -118,7 +119,12 @@ export function RTOGrid({ onOpenModal }: RTOGridProps) {
           font-weight: 600;
         }
 
-        .rto-tier-btn:hover {
+        .rto-tier-btn:disabled {
+          cursor: not-allowed;
+          opacity: 0.75;
+        }
+
+        .rto-tier-btn:hover:not(:disabled) {
           background-color: var(--color-primary);
           border-color: var(--color-primary);
           color: white;

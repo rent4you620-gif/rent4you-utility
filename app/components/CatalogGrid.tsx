@@ -23,7 +23,7 @@ const CATALOG_ITEMS = [
   {
     id: 4,
     name: 'Bauer 2000 PSI Pressure Washer',
-    daily: null,
+    daily: 50,
     monthly: null,
     image: '/products/IMG_0925.WEBP',
     icon: '💦',
@@ -31,7 +31,7 @@ const CATALOG_ITEMS = [
   {
     id: 5,
     name: 'Skid Steer Electric Cement Mixer',
-    daily: null,
+    daily: 150,
     monthly: null,
     image: '/products/IMG_0784.jpeg',
     images: ['/products/IMG_0784.jpeg'],

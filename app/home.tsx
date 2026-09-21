@@ -5,7 +5,6 @@ import { Logo } from './components/Logo';
 import { DialCard } from './components/DialCard';
 import { CatalogGrid } from './components/CatalogGrid';
 import { RTOGrid } from './components/RTOGrid';
-import { Steps } from './components/Steps';
 import ContactForm from './components/ContactForm';
 import RTOModal from './components/RTOModal';
 import { Footer } from './components/Footer';
@@ -59,7 +58,6 @@ export default function HomePage() {
       <Hero />
       <Catalog requestedItems={requestedItems} onAddToRequest={addToRequest} />
       <RTO onOpenModal={openRtoModal} />
-      <HowItWorks />
       <WhyUs />
       <Faq />
       <ServiceArea />
@@ -89,7 +87,6 @@ function Nav() {
         <ul className="nav-links">
           <li><a href="#catalog">Browse</a></li>
           <li><a href="#rto">Rent-to-Own</a></li>
-          <li><a href="#how">How it works</a></li>
           <li><a href="#faq">FAQ</a></li>
           <li><a href="#service-area">Service Area</a></li>
           <li><a href="#contact">Contact</a></li>
@@ -157,24 +154,6 @@ function RTO({ onOpenModal }: { onOpenModal: (item: string, tier: string, price:
           </p>
         </div>
         <RTOGrid onOpenModal={onOpenModal} />
-      </div>
-    </section>
-  );
-}
-
-function HowItWorks() {
-  return (
-    <section id="how">
-      <div className="wrap">
-        <div className="section-head">
-          <p className="eyebrow">How it works</p>
-          <h2>Four steps, no inventory in sight</h2>
-          <p>
-            Because we don't hold stock ourselves, every rental runs through the same simple process — approval just
-            splits two ways depending on the item.
-          </p>
-        </div>
-        <Steps />
       </div>
     </section>
   );

@@ -6,8 +6,7 @@ const RTO_ITEMS = [
     name: 'Standard Washer',
     image: '/products/IMG_0922.WEBP',
     tiers: [
-      { name: 'Basic', price: 45 },
-      { name: 'Premium', price: 65 },
+      { name: 'Free delivery, install & maintenance', price: 50 },
     ],
   },
   {
@@ -15,8 +14,7 @@ const RTO_ITEMS = [
     name: 'Standard Dryer',
     image: '/products/IMG_0923.WEBP',
     tiers: [
-      { name: 'Basic', price: 40 },
-      { name: 'Premium', price: 55 },
+      { name: 'Free delivery, install & maintenance', price: 50 },
     ],
   },
   {
@@ -24,8 +22,7 @@ const RTO_ITEMS = [
     name: 'Washer & Dryer Combo',
     image: '/products/IMG_9434.AVIF',
     tiers: [
-      { name: 'Basic', price: 80 },
-      { name: 'Deluxe', price: 110 },
+      { name: 'Free delivery, install & maintenance', price: 80 },
     ],
   },
 ];

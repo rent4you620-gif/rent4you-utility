@@ -3,7 +3,7 @@ const CATALOG_ITEMS = [
     id: 1,
     name: 'Standard Washer',
     daily: 15,
-    monthly: 45,
+    monthly: 50,
     image: '/products/IMG_0922.WEBP',
     icon: '🔄',
   },
@@ -11,7 +11,7 @@ const CATALOG_ITEMS = [
     id: 2,
     name: 'Standard Dryer',
     daily: 12,
-    monthly: 40,
+    monthly: 50,
     image: '/products/IMG_0923.WEBP',
     icon: '🌬️',
   },
@@ -40,9 +40,20 @@ interface CatalogGridProps {
 
 export function CatalogGrid({ requestedItems, onAddToRequest }: CatalogGridProps) {
   return (
-    <div className="catalog-grid">
-      {CATALOG_ITEMS.map((item) => (
-        <div key={item.id} className="catalog-card">
+    <div className="catalog-section">
+      {requestedItems.length > 0 && (
+        <div className="request-status" aria-live="polite">
+          <strong>{requestedItems.length} item{requestedItems.length === 1 ? '' : 's'} added to your request</strong>
+          <a href="#contact">Review and send request</a>
+        </div>
+      )}
+      <div className="catalog-grid">
+        {CATALOG_ITEMS.map((item) => {
+          const isRequested = requestedItems.includes(item.name);
+
+          return (
+            <div key={item.id} className={`catalog-card ${isRequested ? 'requested' : ''}`}>
+              {isRequested && <span className="requested-badge">Added</span>}
           {item.image ? (
             <img className="catalog-image" src={item.image} alt={item.name} />
           ) : (
@@ -61,15 +72,37 @@ export function CatalogGrid({ requestedItems, onAddToRequest }: CatalogGridProps
           </div>
           <button
             type="button"
-            className={`btn btn-outline ${requestedItems.includes(item.name) ? 'added' : ''}`}
+            className={`btn btn-outline ${isRequested ? 'added' : ''}`}
             onClick={() => onAddToRequest(item.name)}
           >
-            {requestedItems.includes(item.name) ? 'Added to request' : 'Add to request'}
+            {isRequested ? 'Added to request' : 'Add to request'}
           </button>
-        </div>
-      ))}
+            </div>
+          );
+        })}
+      </div>
 
       <style jsx>{`
+        .request-status {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 1rem;
+          margin: 2rem 0;
+          padding: 1rem 1.25rem;
+          border: 2px solid var(--color-primary);
+          border-radius: 8px;
+          background: #eaf6ee;
+          color: var(--color-text-primary);
+        }
+
+        .request-status a {
+          color: var(--color-primary);
+          font-weight: 700;
+          text-decoration: underline;
+          white-space: nowrap;
+        }
+
         .catalog-grid {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -78,6 +111,7 @@ export function CatalogGrid({ requestedItems, onAddToRequest }: CatalogGridProps
         }
 
         .catalog-card {
+          position: relative;
           background: white;
           border: 2px solid var(--color-border);
           border-radius: 12px;
@@ -89,6 +123,24 @@ export function CatalogGrid({ requestedItems, onAddToRequest }: CatalogGridProps
         .catalog-card:hover {
           border-color: var(--color-primary);
           box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .catalog-card.requested {
+          border-color: var(--color-primary);
+          box-shadow: 0 0 0 3px rgba(41, 120, 75, 0.16);
+        }
+
+        .requested-badge {
+          position: absolute;
+          top: 0.75rem;
+          right: 0.75rem;
+          z-index: 1;
+          padding: 0.35rem 0.65rem;
+          border-radius: 999px;
+          background: var(--color-primary);
+          color: white;
+          font-size: 0.8rem;
+          font-weight: 700;
         }
 
         .catalog-icon {
@@ -156,6 +208,18 @@ export function CatalogGrid({ requestedItems, onAddToRequest }: CatalogGridProps
         .btn.btn-outline:hover {
           background-color: var(--color-primary);
           color: white;
+        }
+
+        .btn.btn-outline.added {
+          background-color: var(--color-primary);
+          color: white;
+        }
+
+        @media (max-width: 600px) {
+          .request-status {
+            align-items: flex-start;
+            flex-direction: column;
+          }
         }
 
         @media (max-width: 768px) {

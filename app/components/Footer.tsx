@@ -44,9 +44,6 @@ export function Footer({ companyInfo }: FooterProps) {
                 <a href="#rto">Rent-to-Own</a>
               </li>
               <li>
-                <a href="#how">How It Works</a>
-              </li>
-              <li>
                 <a href="#faq">FAQ</a>
               </li>
               <li>

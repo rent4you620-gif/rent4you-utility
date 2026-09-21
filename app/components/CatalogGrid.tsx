@@ -84,6 +84,12 @@ export function CatalogGrid({ requestedItems, onAddToRequest }: CatalogGridProps
 
               <h3>{item.name}</h3>
               <div className="catalog-pricing">
+                {item.daily !== null && item.daily !== undefined && (
+                  <div className="price-tier">
+                    <span className="price-label">Daily rental</span>
+                    <span className="price-amount">${item.daily}</span>
+                  </div>
+                )}
                 <div className="price-tier">
                   <span className="price-label">Monthly rental</span>
                   <span className="price-amount">{item.monthly ? `$${item.monthly}` : 'for pricing'}</span>

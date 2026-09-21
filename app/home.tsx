@@ -13,7 +13,7 @@ const COMPANY_INFO = {
   name: process.env.NEXT_PUBLIC_COMPANY_NAME || 'Rent4You Utility',
   phone: process.env.NEXT_PUBLIC_PHONE || '(620) 390-9840',
   email: process.env.NEXT_PUBLIC_EMAIL || 'rent4you620@gmail.com',
-  serviceArea: process.env.NEXT_PUBLIC_SERVICE_AREA || 'Dodge City',
+  serviceArea: process.env.NEXT_PUBLIC_SERVICE_AREA || 'Based in Dodge City',
 };
 
 export default function HomePage() {

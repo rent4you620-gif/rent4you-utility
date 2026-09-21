@@ -70,6 +70,9 @@ export function Footer({ companyInfo }: FooterProps) {
           <div className="footer-legal">
             <a href="/privacy-policy">Privacy Policy</a>
             <a href="/terms-of-service">Terms of Service</a>
+            <a href="https://rent4you.online" target="_blank" rel="noopener noreferrer">
+              Rent4You Online
+            </a>
             <a href="#faq">FAQ</a>
           </div>
         </div>

@@ -11,6 +11,13 @@ interface CatalogItem {
 
 const CATALOG_ITEMS: CatalogItem[] = [
   {
+    id: 6,
+    name: '20 Ft Car Hauler Trailer',
+    daily: 80,
+    image: '/products/IMG_1239.jpeg',
+    icon: '🚚',
+  },
+  {
     id: 4,
     name: 'Bauer 2000 PSI Pressure Washer',
     daily: 50,
@@ -26,13 +33,6 @@ const CATALOG_ITEMS: CatalogItem[] = [
     image: '/products/IMG_0784.jpeg',
     images: ['/products/IMG_0784.jpeg'],
     icon: '🏗️',
-  },
-  {
-    id: 6,
-    name: '20 Ft Car Hauler Trailer',
-    daily: 80,
-    image: '/products/IMG_1239.jpeg',
-    icon: '🚚',
   },
   {
     id: 1,

@@ -195,7 +195,7 @@ function Faq() {
 
         <div className="faq-list">
           {faqs.map((item) => (
-            <details key={item.q} className="faq-item" open>
+            <details key={item.q} className="faq-item">
               <summary>{item.q}</summary>
               <p>{item.a}</p>
             </details>

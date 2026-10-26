@@ -48,6 +48,13 @@ const CATALOG_ITEMS: CatalogItem[] = [
     images: ['/products/IMG_0784.jpeg'],
     icon: '🏗️',
   },
+  {
+    id: 6,
+    name: '20 Ft Car Hauler Trailer',
+    daily: 80,
+    image: '/products/IMG_1239.jpeg',
+    icon: '🚚',
+  },
 ];
 
 interface CatalogGridProps {

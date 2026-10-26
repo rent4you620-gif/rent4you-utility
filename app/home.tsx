@@ -131,8 +131,8 @@ function Catalog({ requestedItems, onAddToRequest }: {
       <div className="wrap">
         <div className="section-head">
           <p className="eyebrow">Available now</p>
-          <h2>Washers & dryers, ready to deliver</h2>
-          <p>Our current live inventory — the rest of the catalog is expanding below.</p>
+          <h2>Household essentials and equipment</h2>
+          <p>Browse our current rental inventory and request what you need.</p>
         </div>
         <CatalogGrid requestedItems={requestedItems} onAddToRequest={onAddToRequest} />
       </div>

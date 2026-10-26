@@ -11,27 +11,6 @@ interface CatalogItem {
 
 const CATALOG_ITEMS: CatalogItem[] = [
   {
-    id: 1,
-    name: 'Standard Washer',
-    monthly: 50,
-    image: '/products/IMG_0922.WEBP',
-    icon: '🔄',
-  },
-  {
-    id: 2,
-    name: 'Standard Dryer',
-    monthly: 50,
-    image: '/products/IMG_0923.WEBP',
-    icon: '🌬️',
-  },
-  {
-    id: 3,
-    name: 'Washer & Dryer Combo',
-    monthly: 80,
-    image: '/products/IMG_9434.AVIF',
-    icon: '⚙️',
-  },
-  {
     id: 4,
     name: 'Bauer 2000 PSI Pressure Washer',
     daily: 50,
@@ -54,6 +33,27 @@ const CATALOG_ITEMS: CatalogItem[] = [
     daily: 80,
     image: '/products/IMG_1239.jpeg',
     icon: '🚚',
+  },
+  {
+    id: 1,
+    name: 'Standard Washer',
+    monthly: 50,
+    image: '/products/IMG_0922.WEBP',
+    icon: '🔄',
+  },
+  {
+    id: 2,
+    name: 'Standard Dryer',
+    monthly: 50,
+    image: '/products/IMG_0923.WEBP',
+    icon: '🌬️',
+  },
+  {
+    id: 3,
+    name: 'Washer & Dryer Combo',
+    monthly: 80,
+    image: '/products/IMG_9434.AVIF',
+    icon: '⚙️',
   },
 ];
 

@@ -7,9 +7,8 @@ export default function PrivacyPolicyPage() {
         <p className="eyebrow">Privacy Policy</p>
         <h1>Privacy Policy</h1>
         <p>
-          Rent4You Utility values your privacy. We collect information you provide through our rental inquiry or
-          application forms so we can respond to your request, confirm availability, and process rental or rent-to-own
-          approvals.
+          Rent4You Utility values your privacy. We collect information you provide through our rental inquiry form so
+          we can respond to your request and confirm availability.
         </p>
         <p>
           We may collect your name, phone number, email address, rental interest, and address details as needed to
@@ -18,7 +17,7 @@ export default function PrivacyPolicyPage() {
         </p>
         <p>
           We do not sell personal information. We may share information with trusted service providers involved in
-          payment processing, financing review, or email delivery, only as necessary to fulfill your request.
+          rental services or email delivery, only as necessary to fulfill your request.
         </p>
         <p>
           You may contact us at any time to request a correction or discuss how your information is being used.

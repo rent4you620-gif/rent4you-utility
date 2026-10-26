@@ -1,14 +1,12 @@
 # Rent4You Utility
 
-Flexible rental service landing page with day, month-to-month, and rent-to-own options for washers, dryers, and household items.
+Flexible rental service landing page for washers, dryers, and equipment.
 
 ## Features
 
 - 📱 Responsive design optimized for all devices
-- 🎯 Interactive rental term selector (Day/Month/Own)
-- 📝 Multi-step rent-to-own application flow
-- 💳 Integrated approval routing (self-approval vs. financing partner)
-- ✉️ Email notifications for inquiries and applications
+- 🧺 Rental catalog with item-specific pricing
+- ✉️ Email notifications for rental inquiries
 - 🎨 Modern, accessible UI with comprehensive CSS
 - ⚙️ Fully customizable pricing and content
 
@@ -61,17 +59,12 @@ Edit `.env.local` with your settings:
 
 - **SMTP Settings**: Configure your email provider (Gmail, SendGrid, etc.)
 - **Company Info**: Phone, email, service area
-- **Approval Threshold**: Dollar amount to determine self-approval vs. partner financing
-- **Financing Partner**: API keys for Katapult, Acima, or similar
 
 ### Pricing & Inventory
 
-Update pricing in these locations:
-1. Home page hero section
-2. Catalog cards (Washer, Dryer, Sets)
-3. Rent-to-own items in the RTO section
+Update pricing in the catalog cards in `app/components/CatalogGrid.tsx`.
 
-All prices are currently placeholders marked with `$XX`.
+Update the featured monthly price in `app/components/DialCard.tsx`.
 
 ## API Routes
 
@@ -87,22 +80,6 @@ Submit a general rental inquiry
   "item": "Washer",
   "term": "Month-to-Month",
   "message": "Optional message"
-}
-```
-
-### POST `/api/applications`
-Submit a rent-to-own application
-
-**Request:**
-```json
-{
-  "item": "Sofa (3-seat)",
-  "tier": "partner",
-  "name": "Jane Smith",
-  "dob": "1990-01-15",
-  "phone": "(555) 987-6543",
-  "email": "jane@example.com",
-  "address": "123 Main St, Kansas City, MO 64105"
 }
 ```
 
@@ -127,11 +104,7 @@ Edit the following files:
 
 ### Add More Items
 1. Update catalog grid in home page
-2. Add to RTO section with pricing and approval tier
-3. Update form select options
-
-### Integrate Financing Partner
-Replace the placeholder steps in the RTO modal with your partner's embedded widget (Katapult, Acima, etc.)
+2. Update the item options in the rental inquiry form.
 
 ## Support
 

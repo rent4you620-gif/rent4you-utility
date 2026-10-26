@@ -4,9 +4,7 @@ import { useState } from 'react';
 import { Logo } from './components/Logo';
 import { DialCard } from './components/DialCard';
 import { CatalogGrid } from './components/CatalogGrid';
-import { RTOGrid } from './components/RTOGrid';
 import ContactForm from './components/ContactForm';
-import RTOModal from './components/RTOModal';
 import { Footer } from './components/Footer';
 
 const COMPANY_INFO = {
@@ -18,25 +16,6 @@ const COMPANY_INFO = {
 
 export default function HomePage() {
   const [requestedItems, setRequestedItems] = useState<string[]>([]);
-  const [rtoModal, setRtoModal] = useState<{
-    isOpen: boolean;
-    item: string;
-    tier: string;
-    price: number;
-  }>({
-    isOpen: false,
-    item: '',
-    tier: '',
-    price: 0,
-  });
-
-  const openRtoModal = (item: string, tier: string, price: number) => {
-    setRtoModal({ isOpen: true, item, tier, price });
-  };
-
-  const closeRtoModal = () => {
-    setRtoModal({ isOpen: false, item: '', tier: '', price: 0 });
-  };
 
   const addToRequest = (item: string) => {
     setRequestedItems((currentItems) =>
@@ -57,18 +36,10 @@ export default function HomePage() {
       <Nav />
       <Hero />
       <Catalog requestedItems={requestedItems} onAddToRequest={addToRequest} />
-      <RTO onOpenModal={openRtoModal} />
       <WhyUs />
       <Faq />
       <ServiceArea />
       <Contact requestedItems={requestedItems} onRemoveItem={removeFromRequest} onClearRequest={clearRequest} />
-      <RTOModal
-        isOpen={rtoModal.isOpen}
-        onClose={closeRtoModal}
-        item={rtoModal.item}
-        tier={rtoModal.tier}
-        price={rtoModal.price}
-      />
       <Footer companyInfo={COMPANY_INFO} />
     </>
   );
@@ -86,7 +57,6 @@ function Nav() {
         </a>
         <ul className="nav-links">
           <li><a href="#catalog">Browse</a></li>
-          <li><a href="#rto">Rent-to-Own</a></li>
           <li><a href="#faq">FAQ</a></li>
           <li><a href="#service-area">Service Area</a></li>
           <li><a href="#contact">Contact</a></li>
@@ -102,14 +72,14 @@ function Hero() {
     <header className="hero" id="top">
       <div className="wrap">
         <div className="hero-copy">
-          <p className="eyebrow">Monthly rentals · Rent-to-own coming soon</p>
+          <p className="eyebrow">Flexible rentals · Local service</p>
           <h1>
             Rent what you need.<br />
-            <em>Own it if you want to.</em>
+            <em>Keep life moving.</em>
           </h1>
           <p className="lead">
-            Rent4You Utility connects you with everyday essentials — starting with washers & dryers — with simple
-            monthly pricing. Rent-to-own options are coming soon.
+            Rent4You Utility connects you with everyday essentials — from washers and dryers to equipment — with
+            straightforward rental options and local service.
           </p>
           <div className="hero-actions">
             <a href="#contact" className="btn btn-primary">Request a rental</a>
@@ -140,29 +110,11 @@ function Catalog({ requestedItems, onAddToRequest }: {
   );
 }
 
-function RTO({ onOpenModal }: { onOpenModal: (item: string, tier: string, price: number) => void }) {
-  return (
-    <section className="alt" id="rto">
-      <div className="wrap">
-        <div className="section-head">
-          <p className="eyebrow">Rent-to-own</p>
-          <h2>Rent-to-own is coming soon</h2>
-          <p>
-            We are preparing rent-to-own options for a future launch. Browse the upcoming items now, and contact us
-            about our current monthly rental availability.
-          </p>
-        </div>
-        <RTOGrid onOpenModal={onOpenModal} />
-      </div>
-    </section>
-  );
-}
-
 function WhyUs() {
   const benefits = [
     {
       title: 'Flexible terms',
-      text: 'Monthly rentals designed around your needs and budget, with rent-to-own options coming soon.',
+      text: 'Rental options for everyday essentials and equipment, with pricing to fit the item and rental period.',
     },
     {
       title: 'Fast approvals',
@@ -173,8 +125,8 @@ function WhyUs() {
       text: 'We serve Dodge City and nearby communities with friendly support from a business that knows the area.',
     },
     {
-      title: 'No pressure',
-      text: 'Rent first, then decide whether ownership makes sense. There is no rush to buy before you are ready.',
+      title: 'Straightforward process',
+      text: 'Tell us what you need and when. Our local team will follow up about availability and pricing.',
     },
   ];
 
@@ -209,7 +161,7 @@ function WhyUs() {
             “The process was easy, the pickup was quick, and the monthly plan fit our budget perfectly.”
           </div>
           <div className="review-quote">
-            “Helpful team, straightforward terms, and no pressure to commit to ownership before we were ready.”
+            “Helpful team, straightforward terms, and a rental process that was easy to understand.”
           </div>
         </div>
       </div>
@@ -225,11 +177,7 @@ function Faq() {
     },
     {
       q: 'Do you offer month-to-month rentals?',
-      a: 'Yes. We currently offer monthly rentals. Rent-to-own options are coming soon.',
-    },
-    {
-      q: 'What happens if I want to own the item later?',
-      a: 'If you choose a rent-to-own option, the payment structure is designed to move you toward ownership while keeping your upfront cost manageable.',
+      a: 'Rental periods vary by item. Contact us with what you need and when you need it, and we will confirm available options.',
     },
     {
       q: 'Do you deliver outside Dodge City?',

@@ -7,17 +7,17 @@ const STEPS = [
   {
     number: '2',
     title: 'Review',
-    description: 'For small items, we approve immediately. For bigger-ticket items, we route to our financing partner.',
+    description: 'Our team checks availability and follows up with pricing for your requested item and rental period.',
   },
   {
     number: '3',
-    title: 'Ship',
-    description: 'Once approved, we order and deliver to your address. Usually within 3-5 business days.',
+    title: 'Arrange delivery',
+    description: 'Once your rental is confirmed, we coordinate the next steps with you.',
   },
   {
     number: '4',
     title: 'Enjoy',
-    description: 'Use it for the term you selected. Day rentals end at pickup. Long-term rentals renew automatically.',
+    description: 'Use your rental for the agreed period and contact us if you have any questions.',
   },
 ];
 

@@ -41,9 +41,6 @@ export function Footer({ companyInfo }: FooterProps) {
                 <a href="#catalog">Browse Items</a>
               </li>
               <li>
-                <a href="#rto">Rent-to-Own</a>
-              </li>
-              <li>
                 <a href="#faq">FAQ</a>
               </li>
               <li>
@@ -65,7 +62,7 @@ export function Footer({ companyInfo }: FooterProps) {
             <ul>
               <li>Local service for Southwest Kansas</li>
               <li>Same-day response available</li>
-              <li>Flexible rental and ownership plans</li>
+              <li>Flexible rental options</li>
             </ul>
           </div>
         </div>

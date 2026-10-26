@@ -7,16 +7,15 @@ export default function TermsOfServicePage() {
         <p className="eyebrow">Terms of Service</p>
         <h1>Terms of Service</h1>
         <p>
-          By requesting a rental or rent-to-own plan through Rent4You Utility, you agree to provide accurate information
-          and to communicate promptly regarding availability, delivery, and payment arrangements.
+          By requesting a rental through Rent4You Utility, you agree to provide accurate information and to communicate
+          promptly regarding availability, delivery, and payment arrangements.
         </p>
         <p>
-          Rental terms, approval outcomes, and delivery timing are subject to item availability, credit review, and
-          service area eligibility. We reserve the right to decline any application or request that does not meet our
-          operating requirements.
+          Rental terms and delivery timing are subject to item availability and service area. We reserve the right to
+          decline any request that does not meet our operating requirements.
         </p>
         <p>
-          Rent-to-own and rental agreements are governed by the specific terms provided during approval. Customers are
+          Rental agreements are governed by the specific terms provided when a rental is confirmed. Customers are
           responsible for maintaining items in good condition and for any fees associated with damage, late return, or
           noncompliance with agreed terms.
         </p>
